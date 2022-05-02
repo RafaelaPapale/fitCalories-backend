@@ -51,7 +51,7 @@ const Consumo = {
 
   async login(data) {
     try {
-      const validation = validate.validate(data, Constraints.auth);
+      const validation = validate.validate(data, Constraints.login);
       if (validation) {
         const response = Constants.ErrorValidation;
         response.message = validation;
@@ -59,12 +59,10 @@ const Consumo = {
       }
 
       const response = await ConsumoRepository.auth(data.email, data.senha);
-
       if (response === null) {
         const result = Constants.ErrorNotFound;
         return result;
       }
-      delete response.senha;
       return response;
     } catch (error) {
       return error;

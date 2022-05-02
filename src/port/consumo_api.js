@@ -17,7 +17,7 @@ module.exports = (app) => {
   });
 
   app.post(`${route}/login`, async (req, res) => {
-    const response = await Consumo.auth(req.body);
+    const response = await Consumo.login(req.body);
     res.status(Utils.responseStatus(response.name));
     res.json(response);
 });
