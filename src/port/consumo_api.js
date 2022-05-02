@@ -9,4 +9,10 @@ module.exports = (app) => {
     res.status(Utils.responseStatus(response.name));
     res.json(response);
   });
+
+  app.put(`${route}/update`, async (req, res) => {
+    const response = await Consumo.updateUser(req.body);
+    res.status(Utils.responseStatus(response.name));
+    res.json(response);
+});
 };

@@ -7,6 +7,7 @@ const Constants = require('../utils/constants');
 const ConsumoRepository = require('../port/repository');
 
 const Consumo = {
+  
   async createUser(data) {
     try {
       const validation = validate.validate(data, Constraints.create);
@@ -15,7 +16,7 @@ const Consumo = {
         response.message = validation;
         return response;
       }
-
+      
       data.id = UtilsFunctions.generateUuid();
       data.imc = data.peso / (data.altura * data.altura);
 
@@ -29,6 +30,24 @@ const Consumo = {
       return error;
     }
   },
+
+  async updateUser(data) {
+    try {
+        const validation = validation.update(data);
+        if (validation) {
+            return validation;
+        }
+
+        const response = await ConsumoRepository.update(data);
+        if (response === null) {
+            const result = Constants.ErrorNotFound;
+            return result;
+        }
+        return response;
+    } catch (error) {
+        return error;
+    }
+},
 
 };
 module.exports = Consumo;
