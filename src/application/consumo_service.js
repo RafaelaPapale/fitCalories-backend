@@ -49,7 +49,7 @@ const Consumo = {
     }
   },
 
-  async auth(data) {
+  async login(data) {
     try {
       const validation = validate.validate(data, Constraints.auth);
       if (validation) {
