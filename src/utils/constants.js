@@ -1,23 +1,20 @@
 const Constants = {
   ErrorValidation: {
-      name: 'ValidationError',
-      message: '',
+    name: 'ValidationError',
+    message: '',
   },
-
   ErrorMongo: {
-      name: 'MongoError',
-      message: 'MongoDB Error',
+    name: 'MongoError',
+    message: 'MongoDB Error',
   },
-
   ErrorNotFound: {
-      name: 'NotFound',
-      message: 'Not Found!',
+    name: 'NotFound',
+    message: 'Not Found!',
   },
-
   ErrorDuplicate: {
-      name: 'Duplicate',
-      message: 'Duplicada',
-  }
+    name: 'Duplicate',
+    message: 'Duplicada',
+  },
 };
 
 module.exports = Constants;

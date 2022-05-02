@@ -1,11 +1,11 @@
 const validate = require('validate.js');
 
-const Constraints = require('../application/validation');
+const Constraints = require('./validation/user');
 const UtilsFunctions = require('../utils/utils');
 const Constants = require('../utils/constants');
-const ConsumoRepository = require('../port/repository');
+const UserRepository = require('../port/user/user_repository');
 
-const Consumo = {
+const User = {
   async createUser(data) {
     try {
       const validation = validate.validate(data, Constraints.create);
@@ -18,7 +18,7 @@ const Consumo = {
       data.id = UtilsFunctions.generateUuid();
       data.imc = data.peso / (data.altura * data.altura);
 
-      const response = await ConsumoRepository.create(data);
+      const response = await UserRepository.create(data);
       if (response.code === 11000) {
         const result = Constants.ErrorDuplicate;
         return result;
@@ -38,7 +38,7 @@ const Consumo = {
         return response;
       }
 
-      const response = await ConsumoRepository.update(data);
+      const response = await UserRepository.update(data);
       if (response === null) {
         const result = Constants.ErrorNotFound;
         return result;
@@ -58,7 +58,7 @@ const Consumo = {
         return response;
       }
 
-      const response = await ConsumoRepository.auth(data.email, data.senha);
+      const response = await UserRepository.auth(data.email, data.senha);
       if (response === null) {
         const result = Constants.ErrorNotFound;
         return result;
@@ -69,4 +69,4 @@ const Consumo = {
     }
   },
 };
-module.exports = Consumo;
+module.exports = User;

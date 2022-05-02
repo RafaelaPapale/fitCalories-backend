@@ -1,9 +1,9 @@
-const { ConsumoModel } = require('../infraestructure/database');
+const { UserModel } = require('../../infraestructure/database');
 
-const ConsumoRepository = {
+const UserRepository = {
   async create(data) {
     try {
-      const model = new ConsumoModel(data);
+      const model = new UserModel(data);
       const response = await model.save();
       return response.toObject();
     } catch (e) {
@@ -22,7 +22,7 @@ const ConsumoRepository = {
       };
       const options = { new: true };
       const filter = { email: data.email };
-      const result = await ConsumoModel.findOneAndUpdate(filter, update, options).exec();
+      const result = await UserModel.findOneAndUpdate(filter, update, options).exec();
       if (result === null) return []
       return result.toObject();
     } catch (e) {
@@ -32,8 +32,8 @@ const ConsumoRepository = {
 
   async auth(email, senha) {
     try {
-      const response = await ConsumoModel.findOne({ email, senha });
-      if(response === null) return response;
+      const response = await UserModel.findOne({ email, senha });
+      if (response === null) return response;
       return response.toObject();
     } catch (e) {
       return e;
@@ -42,4 +42,4 @@ const ConsumoRepository = {
 
 };
 
-module.exports = ConsumoRepository;
+module.exports = UserRepository;

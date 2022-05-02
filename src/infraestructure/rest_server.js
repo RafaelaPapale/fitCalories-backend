@@ -5,6 +5,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-require('../port/consumo_api')(app);
+require('../port/user/user_api')(app);
 
 module.exports = app;
