@@ -1,6 +1,6 @@
-const create = require('..user/create');
-const update = require('..user/update');
-const login = require('..user/login');
+const create = require('./create');
+const update = require('./update');
+const login = require('./login');
 
 module.exports = {
   create,

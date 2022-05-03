@@ -39,6 +39,7 @@ const FoodSchema = new Schema({
   caloria: Number,  
   nome: String,
   quantidade: Number,
+  data: String,
 
 });
 
@@ -49,5 +50,4 @@ const FoodModel = mongoose.model('FoodModel', FoodSchema);
 module.exports = {
   UserModel,
   FoodModel,
-  mongoose,
 };

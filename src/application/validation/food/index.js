@@ -1,9 +1,7 @@
-const create = require('../food/create');
-const update = require('..food/update');
-
+const create = require('./create');
+const update = require('./update');
 
 module.exports = {
   create,
   update,
-
 };

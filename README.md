@@ -21,8 +21,9 @@
 - Cadastrar alimentos
 - Editar alimentos
 - Deletar alimentos
+- Listar alimentos
 
-#### Refeição:
+#### TotalCalorias:
 - Cadastrar refeição
 - Listar refeições
 - Editar refeição

@@ -5,7 +5,6 @@ module.exports = {
         },
         type: 'string',
     },
-
     caloria: {
         presence: {
             allowEmpty: false,
@@ -17,7 +16,17 @@ module.exports = {
             allowEmpty: false,
         },
         type: 'number',
-    }
-
-
+    },
+    data: {
+        presence: {
+            allowEmpty: false,
+        },
+        type: 'string',
+    },
+    userId: {
+        presence: {
+            allowEmpty: false,
+        },
+        type: 'string',
+    },
 };
