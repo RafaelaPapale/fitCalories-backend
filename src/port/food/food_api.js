@@ -16,5 +16,15 @@ module.exports = (app) => {
     res.json(response);
   });
 
+  app.patch(`${route}/list`, async (req, res) => {
+    const response = await Consumo.listFood(req.body);
+    res.status(Utils.responseStatus(response.name));
+    res.json(response);
+  });
 
+  app.delete(`${route}/delete`, async (req, res) => {
+    const response = await Consumo.deleteFood(req.body);
+    res.status(Utils.responseStatus(response.name));
+    res.json(response);
+  });
 };

@@ -39,7 +39,7 @@ const User = {
       }
 
       const response = await UserRepository.update(data);
-      if (response === null) {
+      if (response === []) {
         const result = Constants.ErrorNotFound;
         return result;
       }
