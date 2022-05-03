@@ -29,7 +29,25 @@ const UserSchema = new Schema({
 
 const UserModel = mongoose.model('UserModel', UserSchema);
 
+const FoodSchema = new Schema({
+  id: {
+      type: String,
+      index: true,
+      unique: true,
+  },
+  userId: String,
+  caloria: Number,  
+  nome: String,
+  quantidade: Number,
+
+});
+
+const FoodModel = mongoose.model('FoodModel', FoodSchema);
+
+
+
 module.exports = {
   UserModel,
+  FoodModel,
   mongoose,
 };
