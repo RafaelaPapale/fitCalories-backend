@@ -4,6 +4,7 @@ const Constraints = require('./validation/food');
 const UtilsFunctions = require('../utils/utils');
 const Constants = require('../utils/constants');
 const FoodRepository = require('../port/food/food_repository');
+const CaloriasService = require('../application/calorias_service');
 
 const Food = {
   async createFood(data) {
@@ -22,6 +23,11 @@ const Food = {
         const result = Constants.ErrorDuplicate;
         return result;
       }
+
+      var parte = data.data.substring(0, 10).split('-').reverse().join('/');
+
+      await CaloriasService.updateCaloriasSoma(parte, data.userId, data.caloria);
+
       return response;
     } catch (error) {
       return error;
@@ -77,11 +83,18 @@ const Food = {
         return response;
       }
 
+      const food = await FoodRepository.getFood(data);
+
       const response = await FoodRepository.deleteFood(data);
       if (response === []) {
         const result = Constants.ErrorNotFound;
         return result;
       }
+
+      var parte = food.data.substring(0, 10).split('-').reverse().join('/');
+
+      await CaloriasService.updateCaloriasSubtrai(parte, food.userId, food.caloria);
+
       return response;
     } catch (error) {
       return error;

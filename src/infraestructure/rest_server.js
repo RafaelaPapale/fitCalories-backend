@@ -7,5 +7,6 @@ app.use(cors());
 
 require('../port/user/user_api')(app);
 require('../port/food/food_api')(app);
+require('../port/calorias/calorias_api')(app);
 
 module.exports = app;

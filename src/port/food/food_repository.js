@@ -39,6 +39,16 @@ const FoodRepository = {
     }
   },
 
+  async getFood(data) {
+    try {
+      const result = await FoodModel.findOne({ userId: data.userId, id: data.id }).exec();
+      if (result === null) return []
+      return result;
+    } catch (e) {
+      return e;
+    }
+  },
+
   async deleteFood(data) {
     try {
       const result = await FoodModel.deleteOne({ userId: data.userId, id: data.id }).exec();
