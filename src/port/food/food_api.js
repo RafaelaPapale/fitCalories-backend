@@ -5,6 +5,7 @@ const route = '/food';
 
 module.exports = (app) => {
   app.post(`${route}/create`, async (req, res) => {
+    console.log('res', req.body)
     const response = await Consumo.createFood(req.body);
     res.status(Utils.responseStatus(response.name));
     res.json(response);
@@ -22,7 +23,7 @@ module.exports = (app) => {
     res.json(response);
   });
 
-  app.delete(`${route}/delete`, async (req, res) => {
+  app.post(`${route}/delete`, async (req, res) => {
     const response = await Consumo.deleteFood(req.body);
     res.status(Utils.responseStatus(response.name));
     res.json(response);

@@ -18,10 +18,6 @@ const Calorias = {
       data.totalConsumido = 0;
 
       const response = await CaloriasRepository.create(data);
-      if (response.code === 11000) {
-        const result = Constants.ErrorDuplicate;
-        return result;
-      }
       return response;
     } catch (error) {
       return error;

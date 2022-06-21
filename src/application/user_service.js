@@ -38,6 +38,8 @@ const User = {
         return response;
       }
 
+      data.imc = data.peso / (data.altura * data.altura);
+
       const response = await UserRepository.update(data);
       if (response === []) {
         const result = Constants.ErrorNotFound;

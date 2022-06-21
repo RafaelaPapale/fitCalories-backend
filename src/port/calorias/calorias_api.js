@@ -10,7 +10,7 @@ module.exports = (app) => {
     res.json(response);
   });
 
-  app.get(`${route}/list`, async (req, res) => {
+  app.patch(`${route}/list`, async (req, res) => {
     const response = await Calorias.getCalorias(req.body);
     res.status(Utils.responseStatus(response.name));
     res.json(response);

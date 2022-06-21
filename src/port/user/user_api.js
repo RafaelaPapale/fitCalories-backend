@@ -5,6 +5,7 @@ const route = '/user';
 
 module.exports = (app) => {
   app.post(`${route}/create`, async (req, res) => {
+    console.log('BODY', req.body)
     const response = await Consumo.createUser(req.body);
     res.status(Utils.responseStatus(response.name));
     res.json(response);

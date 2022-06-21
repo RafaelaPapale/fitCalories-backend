@@ -19,6 +19,7 @@ const UserRepository = {
         altura: data.altura,
         peso: data.peso,
         senha: data.senha,
+        imc: data.imc,
       };
       const options = { new: true };
       const filter = { email: data.email };
